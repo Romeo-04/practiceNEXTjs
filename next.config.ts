@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   experimental:{
     turbopackFileSystemCacheForDev:true
-  }
+  },
+  cacheComponents : true, // for caching components to improve performance
 };
 
 export default nextConfig;
