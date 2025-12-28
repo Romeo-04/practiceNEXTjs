@@ -1,12 +1,13 @@
 import React from 'react'
 import ExploreBtn from './components/ExploreBtn'
+import EventCard from './components/EventCard'
 
 const events = [
-  { image : '/images/event1.jpg', title: 'Event 1'},
-  { image : '/images/event2.jpg', title: 'Event 2'},
-  { image : '/images/event3.jpg', title: 'Event 3'},
-  { image : '/images/event4.jpg', title: 'Event 4'},
-  { image : '/images/event5.jpg', title: 'Event 5'},
+  { image : '/images/event1.png', title: 'Event 1'},
+  { image : '/images/event2.png', title: 'Event 2'},
+  { image : '/images/event3.png', title: 'Event 3'},
+  { image : '/images/event4.png', title: 'Event 4'},
+  { image : '/images/event5.png', title: 'Event 5'},
 ]
 const page = () => {
   return (
@@ -20,8 +21,8 @@ const page = () => {
         <h3> Featured Events </h3>
 
         <ul className="events">
-          {[1,2,3,4,5].map((event)=> (
-            <li key={event} className="event-card"> Event {event}
+          {events.map((event)=> (
+            <li key={event.title} className="event-card"> <EventCard {...event} />
             </li>
           ))} 
         </ul>
