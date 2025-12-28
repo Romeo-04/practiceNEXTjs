@@ -10,7 +10,7 @@ const NavBar = () => {
              <p> DevEvent </p>
             </Link>
             
-            <ul className="flex space-x-6">
+            <ul className="flex space-x-6 list-none">
                 <li> <Link href="/"> Home </Link> </li>
                 <li> <Link href="/events"> Events </Link> </li>
                 <li> <Link href="/about"> About </Link> </li>
