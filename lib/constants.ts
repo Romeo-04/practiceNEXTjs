@@ -13,4 +13,5 @@ export const eventsData: EventItem[] = [
     { image : '/images/event3.png', title: 'AWS re:Invent',slug:'event-3',location:'Los Angeles',date:'2024-09-10',time:'12:00 PM'},
     { image : '/images/event4.png', title: 'Microsoft Build',slug:'event-4',location:'Chicago',date:'2024-10-05',time:'01:00 PM'},
     { image : '/images/event5.png', title: 'Apple WWDC',slug:'event-5',location:'Boston',date:'2024-11-15',time:'02:00 PM'},
+    { image : '/images/event6.png', title: 'TechCrunch Disrupt',slug:'event-6',location:'Seattle',date:'2024-12-01',time:'03:00 PM'},
 ];
