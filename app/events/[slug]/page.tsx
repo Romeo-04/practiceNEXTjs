@@ -148,7 +148,7 @@ const EventDetailsPage = async ({
         <h2>Similar Events</h2>
         <div className="events">
           {similarEvents.length > 0 ? similarEvents.map((similarEvent:IEvent) => (
-            <EventCard key={similarEvent._id}/>
+            <EventCard key={similarEvent.title} {...similarEvent} />
           )) : (
             <p>No similar events found.</p>
           )} 
