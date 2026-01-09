@@ -89,6 +89,6 @@ export async function GET(){
         return NextResponse.json({message:'Events fetched successfully', events}, {status:200});
     }
     catch(e){
-        return NextResponse.json({message:'Failed to fetch events',error: e instanceof Error ? e.message:' Unknown error'},{status:500});
+        return NextResponse.json({message:'Failed to fetch events',error: e instanceof Error ? e.message:'Unknown error'},{status:500});
     }
 }
