@@ -1,8 +1,9 @@
-
-const Admin = () => {
+const AdminPage = () => {
   return (
-    <div className="text-5xl">admin</div>
-  )
-}
+    <section>
+      <h1 className="text-5xl">Admin Dashboard</h1>
+    </section>
+  );
+};
 
-export default Admin
+export default AdminPage;

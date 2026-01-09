@@ -1,10 +1,20 @@
-import React from 'react'
 import ExploreBtn from './components/ExploreBtn'
 import EventCard from './components/EventCard'
-import { time } from 'console'
-import { eventsData } from '../lib/constants'
+import { IEvent } from '../database';
 
-const page = () => {
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
+const HomePage = async () => {
+  const response = await fetch(`${BASE_URL}/api/events`, {
+    next: { revalidate: 60 } // Revalidate every 60 seconds
+  });
+  
+  if (!response.ok) {
+    throw new Error('Failed to fetch events');
+  }
+  
+  const { events } = await response.json();
+
   return (
     <section> 
       <h1 className="text-center"> The Hub Event for every Dev <br/> Events you cant Miss </h1>
@@ -16,14 +26,15 @@ const page = () => {
         <h3> Featured Events </h3>
 
         <ul className="events list-none">
-          {eventsData.map((event)=> (
-            <li key={event.title} className="event-card"> <EventCard {...event} />
+          {events && events.length > 0 && events.map((event: IEvent) => (
+            <li key={event.slug} className="event-card">
+              <EventCard {...event} />
             </li>
           ))} 
         </ul>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default page
+export default HomePage;

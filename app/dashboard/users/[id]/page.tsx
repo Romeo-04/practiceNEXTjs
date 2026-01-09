@@ -1,9 +1,16 @@
-
-const UserDetails = async ({params}:{params:Promise<{id: string}>}) => {
-const {id} = await params;
-  return (
-    <div>Showing user details for user {id}</div>
-  )
+interface UserDetailsProps {
+  params: Promise<{ id: string }>;
 }
 
-export default UserDetails
+const UserDetailsPage = async ({ params }: UserDetailsProps) => {
+  const { id } = await params;
+  
+  return (
+    <section>
+      <h1>User Details</h1>
+      <p>Showing details for user {id}</p>
+    </section>
+  );
+};
+
+export default UserDetailsPage;

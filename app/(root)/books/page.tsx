@@ -1,23 +1,40 @@
-import books from "@/app/api/db";
+interface Book {
+    id: number;
+    title: string;
+    author: string;
+}
 
-async function Page(){
-    "use cache"; // Enable caching for this component
-    const response = await fetch("http://localhost:3000/api/books");
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-    const booksData = await response.json();
+async function BooksPage() {
+    // Note: Add /api/books route if it doesn't exist
+    const response = await fetch(`${BASE_URL}/api/books`, {
+        next: { revalidate: 60 },
+    });
 
-    return(
-        <div>
+    if (!response.ok) {
+        return (
+            <section>
+                <h1>Books</h1>
+                <p>Failed to load books. Please try again later.</p>
+            </section>
+        );
+    }
+
+    const booksData: Book[] = await response.json();
+
+    return (
+        <section>
             <h1>Books</h1>
             <ul>
-                {booksData.map((book: {id: number; title: string; author: string}) => (
+                {booksData.map((book) => (
                     <li key={book.id}>
                         {book.title} by {book.author}
                     </li>
                 ))}
             </ul>
-        </div>
-    )
+        </section>
+    );
 }
 
-export default Page;
+export default BooksPage;

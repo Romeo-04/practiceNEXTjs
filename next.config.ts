@@ -3,6 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   // Installed babel-plugin-react-compiler for optimizing React code specifically for efficient memoization and rendering.
+  images : {
+    remotePatterns : [
+      {
+        protocol : 'https',
+        hostname : 'res.cloudinary.com',
+      },
+    ]
+  },
   reactCompiler: true,
   experimental:{
     turbopackFileSystemCacheForDev:true
