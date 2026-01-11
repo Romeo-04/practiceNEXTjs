@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   // Installed babel-plugin-react-compiler for optimizing React code specifically for efficient memoization and rendering.
+  cacheComponents : true,
   images : {
     remotePatterns : [
       {
@@ -14,7 +15,6 @@ const nextConfig: NextConfig = {
   experimental:{
     turbopackFileSystemCacheForDev:true
   },
-  cacheComponents : true, // for caching components to improve performance
 
   async rewrites() {
     return [

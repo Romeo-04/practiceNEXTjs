@@ -1,10 +1,13 @@
 import ExploreBtn from './components/ExploreBtn'
 import EventCard from './components/EventCard'
 import { IEvent } from '../database';
+import {cacheLife} from 'next/cache';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const HomePage = async () => {
+  'use cache';
+  cacheLife('hours');
   const response = await fetch(`${BASE_URL}/api/events`, {
     next: { revalidate: 60 } // Revalidate every 60 seconds
   });

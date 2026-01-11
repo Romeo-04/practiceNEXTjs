@@ -1,3 +1,5 @@
+'use cache';
+
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import BookEvent from "../../components/BookEvent";
@@ -5,7 +7,7 @@ import React from "react";
 import { IEvent } from "@/database/event.model";
 import { getSimilarEventsBySlug } from "@/lib/actions/event.actions";
 import EventCard from "@/app/components/EventCard";
-
+import { cacheLife } from 'next/cache';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 interface EventDetailItemProps {
@@ -54,6 +56,7 @@ const EventDetailsPage = async ({
 }: {
   params: Promise<{ slug: string }>;
 }) => {
+  cacheLife('hours');
   const { slug } = await params;
   const response = await fetch(`${BASE_URL}/api/events/${slug}`, {
     next : { revalidate: 60 },
@@ -139,7 +142,7 @@ const EventDetailsPage = async ({
             ): (
               <p className="spots-unavailable">No spots available</p>
             )}
-            <BookEvent />
+            <BookEvent eventId={event._id} slug ={event.slug}/>
           </div>
         </aside>
       </div>
